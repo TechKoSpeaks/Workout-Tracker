@@ -4,7 +4,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 
 // This will automatically run the seed for schema //
-! require("./seeders/seed");
+// ! require("./seeders/seed");
 
 // Start app at port 8080 //
 const PORT = process.env.PORT || 8080;
