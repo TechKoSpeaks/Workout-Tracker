@@ -5,6 +5,7 @@ require("mongoose");
 // Exporting the application //
 module.exports = (app) => {
 
+    // POST ROUTE //
     // Creating the post route for workouts to be created //
     app.post("/api/workouts", (req, res) => {
 
@@ -16,9 +17,27 @@ module.exports = (app) => {
     });
 
 
-    // Get route for getting the last workout //
-    app.get("/api/workouts", (req, res) => {
 
+    // PUT ROUTE //
+    // Adding an exercise to the database //
+    app.put("/api/workouts/:id", (req, res) => {
+        // Finding workout in DB and updating by ID, pushing new exercise //
+        db.Workout.findByIdAndUpdate(req.params.id,
+            // push ajax call w/ parameters of exercises body //
+            { $push: { exercises: req.body } },
+            { new: true, runValidators: true })
+
+            // When workout ID has been found and updated, send JSON response //
+            .then(data => res.json(data))
+            .catch(err => {
+                console.log("error", err);
+                res.json(err);
+            });
+    });
+
+    // GET ROUTES //
+    // GET route for finding/retrieving the previous workout //
+    app.get("/api/workouts", (req, res) => {
         db.Workout.find({}).then(data => res.json(data))
             .catch(err => {
                 console.log("error", err);
@@ -26,21 +45,18 @@ module.exports = (app) => {
             });
     });
 
-        // Adding an exercise to the database //
-        app.put("/api/workouts/:id", (req, res) => {  
-            db.Workout.findByIdAndUpdate(req.params.id,
-                {$push: {exercises: req.body}},
-                {new: true, runValidators: true})
-                
-            .then(data => res.json(data))
+    // Finding workouts in a specific range //
+    app.get("/api/workouts/range", (req, res) => {
+        // Limiting the exercise data findings to 7 for the parameters of the week, sending data as JSON //
+        db.Workout.find({}).limit(7).then(data => res.json(data))
+        // Creating a catch for logging errors //
             .catch(err => {
-                console.log("error", err);  
+                console.log("error", err);
                 res.json(err);
-              });
-    
-        });
+            });
+    });
 
-    // Catch-all on the "/" performing a redirect //
+    // Catch-all (*) on the "/" performing a redirect //
     app.get("*", (req, res) => {
         res.redirect("/");
     });
