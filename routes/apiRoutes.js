@@ -45,7 +45,7 @@ module.exports = (app) => {
     // Finding workouts in a specific range //
     app.get("/api/workouts/range", (req, res) => {
 
-        // Limiting the findings to 7 for the parameters of the week, sending data as JSON //
+        // Limiting the findings to 7 for the last seven workouts, sending data as JSON //
         db.Workout.find({}).limit(7).then(data => res.json(data))
             .catch(err => {
                 console.log("error", err);
