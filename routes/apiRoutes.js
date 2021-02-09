@@ -24,8 +24,9 @@ module.exports = (app) => {
     app.put("/api/workouts/:id", (req, res) => {
         // Finding workout in DB and updating by ID, pushing new exercise //
         db.Workout.findByIdAndUpdate(req.params.id,
-            // push ajax call w/ parameters of exercises body //
+            // Push ajax call w/ parameters of exercises body //
             { $push: { exercises: req.body } },
+            // Pushing new req.body running validators //
             { new: true, runValidators: true })
 
             // When workout ID has been found and updated, send JSON response //
