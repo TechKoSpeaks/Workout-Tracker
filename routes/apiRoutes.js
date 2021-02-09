@@ -1,3 +1,4 @@
+// Creating constant for requiring index and workout models //
 const db = require("../models");
 
 require("mongoose");

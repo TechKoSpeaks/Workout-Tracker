@@ -13,6 +13,7 @@ const app = express();
 
 app.use(logger("dev"));
 
+// Encode express and use produce static page for html //
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -25,9 +26,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 
 // Requiring HTML and API routes for routing //
 require("./routes/htmlRoutes.js")(app);
+// API route //
 require("./routes/apiRoutes.js")(app);
 
 // App listening on selected Port //
 app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
+  console.log(`Application is running on port ${PORT}!`);
 });

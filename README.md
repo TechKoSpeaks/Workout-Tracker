@@ -1,17 +1,6 @@
 # NoSQL Workout-Tracker
 
-# NoSQL Workout Tracker
-‎
-‎‎![License](https://img.shields.io/static/v1?label=License&message=MIT&color=brightgreen) 
-![License](https://img.shields.io/static/v1?label=Language&message=JavaScript&color=yellow)
-![License](https://img.shields.io/static/v1?label=Language&message=Chart.js&color=red) 
-![License](https://img.shields.io/static/v1?label=Language&message=Node.js&color=green)
 
-
-![License](https://img.shields.io/static/v1?label=Language&message=MongoDB&color=blueviolet)
-![License](https://img.shields.io/static/v1?label=Language&message=Mongoose&color=blue)
-![License](https://img.shields.io/static/v1?label=Language&message=Express.js&color=yellowgreen)    ![License](https://img.shields.io/static/v1?label=Language&message=HTML5&color=orange) ![License](https://img.shields.io/static/v1?label=Language&message=CSS3&color=blue) 
-  
 
   ---
   
@@ -78,8 +67,21 @@ When the user navigates to the dashboard page (/stats page) an aggregate chart w
 
 ## Technology
 
+‎‎![License](https://img.shields.io/static/v1?label=License&message=MIT&color=brightgreen) 
+![License](https://img.shields.io/static/v1?label=Language&message=JavaScript&color=yellow)
+![License](https://img.shields.io/static/v1?label=Language&message=Node.js&color=green)
+
+![License](https://img.shields.io/static/v1?label=Language&message=Chart.js&color=red) 
+![License](https://img.shields.io/static/v1?label=Language&message=MongoDB&color=blueviolet)
+![License](https://img.shields.io/static/v1?label=Language&message=Mongoose&color=blue)
+![License](https://img.shields.io/static/v1?label=Language&message=Express.js&color=yellowgreen)    
+![License](https://img.shields.io/static/v1?label=Language&message=HTML5&color=orange) 
+![License](https://img.shields.io/static/v1?label=Language&message=CSS3&color=blue) 
+
 Technology Used:
 
+Mongoose
+<br>
 MongoDB
 <br>
 NoSQL
@@ -90,7 +92,7 @@ Express
 <br>
 Chart.JS
 <br>
-JSON
+AJAX/JSON
 
 <br>
 

@@ -2,5 +2,6 @@
 const Workout = require("./workout.js")
 
 module.exports = { 
+    // Exporting Workout model into Workout //
     Workout: Workout  
 };
