@@ -16,7 +16,7 @@ This application is a NoSQL based workout app that allows users to input workout
 <br>
 
 
-View the application here =>‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏[`Workout Tracker`](heroku_app link here)
+View the application here =>‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏[`Workout Tracker`](https://warm-sierra-09637.herokuapp.com/)
 
 
 <br>
