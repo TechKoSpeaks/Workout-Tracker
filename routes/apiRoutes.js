@@ -1,4 +1,3 @@
-// Creating constant for requiring index and workout models //
 const db = require("../models");
 
 require("mongoose");
@@ -6,7 +5,6 @@ require("mongoose");
 // Exporting the application //
 module.exports = (app) => {
 
-    // POST ROUTE //
     // Creating the post route for workouts to be created //
     app.post("/api/workouts", (req, res) => {
 
@@ -17,28 +15,8 @@ module.exports = (app) => {
             });
     });
 
-
-
-    // PUT ROUTE //
-    // Adding an exercise to the database //
-    app.put("/api/workouts/:id", (req, res) => {
-        // Finding workout in DB and updating by ID, pushing new exercise //
-        db.Workout.findByIdAndUpdate(req.params.id,
-            // Push ajax call w/ parameters of exercises body //
-            { $push: { exercises: req.body } },
-            // Pushing new req.body running validators //
-            { new: true, runValidators: true })
-
-            // When workout ID has been found and updated, send JSON response //
-            .then(data => res.json(data))
-            .catch(err => {
-                console.log("error", err);
-                res.json(err);
-            });
-    });
-
-    // GET ROUTES //
-    // GET route for finding/retrieving the previous workout //
+    // 1ST GET ROUTE //
+    // Get route for getting the last workout //
     app.get("/api/workouts", (req, res) => {
         db.Workout.find({}).then(data => res.json(data))
             .catch(err => {
@@ -47,18 +25,35 @@ module.exports = (app) => {
             });
     });
 
-    // Finding workouts in a specific range //
-    app.get("/api/workouts/range", (req, res) => {
-        // Limiting the exercise data findings to 7 for the parameters of the week, sending data as JSON //
-        db.Workout.find({}).limit(7).then(data => res.json(data))
-        // Creating a catch for logging errors //
+    // PUT ROUTE //
+    // Adding an exercise to the database //
+    app.put("/api/workouts/:id", (req, res) => {
+        // Finding workout in DB and updating by ID, pushing new exercise //
+        db.Workout.findByIdAndUpdate(req.params.id,
+            // push parameters ajax call is exercises body //
+            { $push: { exercises: req.body } },
+            { new: true, runValidators: true })
+
+            .then(data => res.json(data))
             .catch(err => {
                 console.log("error", err);
                 res.json(err);
             });
     });
 
-    // Catch-all (*) on the "/" performing a redirect //
+    // 2ND GET ROUTE //
+    // Finding workouts in a specific range //
+    app.get("/api/workouts/range", (req, res) => {
+
+        // Limiting the findings to 7 for the parameters of the week, sending data as JSON //
+        db.Workout.find({}).limit(7).then(data => res.json(data))
+            .catch(err => {
+                console.log("error", err);
+                res.json(err);
+            });
+    });
+
+    // Catch-all on the "/" performing a redirect //
     app.get("*", (req, res) => {
         res.redirect("/");
     });
